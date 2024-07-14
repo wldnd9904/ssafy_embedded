@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <style>
+      .label {
+        border: 1px solid black;
+        color: white;
+        background-color: gray;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+      .profileImgContainer {
+        border: 1px solid black;
+        border-radius: 50%;
+        background-image: url("./man.jpg");
+        background-position: 50%;
+        background-size: cover;
+        width: 150px;
+        height: 150px;
+        margin: 50px auto 15px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+      }
+      .profileInformationContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">프로필 사진을 올려보자</div>
+    <div class="profileImgContainer"></div>
+    <div class="profileInformationContainer">
+      <span style="font-weight: bold; font-size: 1.2rem">
+        Ahmed Ali Hassan, 47
+      </span>
+      <span style="color: gray">@ahmed_hassan77</span>
+      <span>+971 50 123 4567</span>
+      <span>Al Wasl, Dubai, United Arab Emirates</span>
+      <span style="font-weight: bold">"Annyeonghaseyo BangaBanga"</span>
+    </div>
+  </body>
+</html>
