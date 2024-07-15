@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thumbnail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .thumbnail {
+        position: relative;
+        width: 340px;
+        height: 200px;
+        background-image: url("./man-7373140_1280.jpg");
+        background-size: cover;
+        background-position: 50%;
+        border-radius: 30px;
+      }
+      .play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: black;
+        border-radius: 50%;
+        transform: translate(-25px, -25px);
+      }
+      .triangle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0px;
+        border: 12px solid transparent;
+        border-left: 18px solid lightgray;
+        transform: translate(-7.5px, -12px);
+      }
+      .title {
+        position: absolute;
+        top: 25%;
+        left: 10%;
+        font-size: 2.5rem;
+        font-family: "Black Han Sans", sans-serif;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="thumbnail">
+      <div class="play">
+        <div class="triangle"></div>
+      </div>
+      <span class="title">
+        24시간
+        <br />
+        노동요
+      </span>
+    </div>
+  </body>
+</html>

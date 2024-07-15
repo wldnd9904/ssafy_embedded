@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KakaoProfile</title>
+  </head>
+  <style>
+    .flex-row {
+      display: flex;
+      gap: 1rem;
+    }
+    .image {
+      width: 200px;
+      height: 200px;
+    }
+    .cropped {
+      border-radius: 50%;
+      border: 3px solid black;
+    }
+    .imageContainer {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 3px solid black;
+      background-image: url("./chunsik.png");
+      background-position-x: 50%;
+      background-position-y: 20%;
+      background-size: 150%;
+    }
+  </style>
+  <body>
+    <div class="flex-row">
+      <img class="image" src="./chunsik.png" alt="chunsik" />
+      <img class="image cropped" src="./chunsik.png" alt="chunsik" />
+      <div class="imageContainer"></div>
+    </div>
+  </body>
+</html>

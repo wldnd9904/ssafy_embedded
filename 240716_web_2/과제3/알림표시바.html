@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Noticebar</title>
+    <style>
+      .noticeBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        position: fixed;
+        top: 0;
+        height: 60px;
+        width: 80%;
+        border: 1px solid black;
+      }
+      .profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .profileImage {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 1rem;
+      }
+      .username {
+        font-size: 0.8rem;
+        color: gray;
+        font-weight: bold;
+        margin-right: 0.2rem;
+      }
+      .downArrow {
+        width: 0;
+        height: 0;
+        border: 4px solid transparent;
+        border-top-color: gray;
+        transform: translateY(2px);
+      }
+      .icon {
+        width: 20px;
+        height: 20px;
+        opacity: 50%;
+      }
+      .mail {
+        position: relative;
+        transform: translateY(0.1rem);
+      }
+      .badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: forestgreen;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        font-size: 0.7rem;
+        transform: translate(0.6rem, -0.35rem);
+        padding: 0 0.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noticeBar">
+      <div class="profile">
+        <img class="profileImage" src="./chicken.jpg" alt="chicken" />
+        <span class="username">최지웅</span>
+        <div class="downArrow"></div>
+      </div>
+      <img class="icon" src="./bell.png" alt="bell" />
+      <div class="mail">
+        <img class="icon" src="./mail.png" alt="mail" />
+        <div class="badge">99+</div>
+      </div>
+      <img class="icon" src="./grid.png" alt="grid" />
+    </div>
+  </body>
+</html>

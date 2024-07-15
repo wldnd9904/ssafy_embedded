@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naver</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 600px;
+        margin: 0 auto;
+        gap: 2rem;
+      }
+      .self-end {
+        align-self: flex-end;
+      }
+      .logo {
+        width: 230px;
+        height: 44px;
+        background-image: url("./naver.png");
+        background-size: 230px 96px;
+      }
+      .loginContainer {
+        background-color: #f5f6f7;
+        width: 440px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .loginTypeContainer {
+        background-color: #f5f6f7;
+        display: flex;
+        flex-direction: row;
+      }
+      .loginType {
+        background-color: #f5f6f7;
+        flex-grow: 1;
+        text-align: center;
+        color: gray;
+        padding: 1rem;
+      }
+      .selectedLoginType {
+        position: relative;
+        background-color: white;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        border: 1px solid #e1e3e5;
+        border-bottom: 0;
+        color: black;
+        border-bottom-right-radius: -10px;
+      }
+      .selectedLoginType::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        right: -9px;
+        width: 10px;
+        height: 10px;
+        background-color: white;
+      }
+      .unselectedLoginType1 {
+        position: relative;
+        border: 1px solid #e1e3e5;
+        border-top: 0;
+        border-left: 0;
+        border-bottom-left-radius: 10px;
+      }
+      .unselectedLoginType1::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: -1px;
+        width: 20px;
+        height: 20px;
+        background-color: #f5f6f7;
+        border: 1px solid #e1e3e5;
+        border-top: 0;
+        border-right: 0;
+        border-bottom-left-radius: 10px;
+      }
+      .unselectedLoginType2 {
+        border-bottom: 1px solid #e1e3e5;
+        position: relative;
+      }
+      .unselectedLoginType2::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        right: -1px;
+        width: 10px;
+        height: 10px;
+        background-color: #f5f6f7;
+      }
+
+      .loginForm {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #e1e3e5;
+        border-top: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .loginForm::after {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        width: 20px;
+        height: 20px;
+        background-color: white;
+        border: 1px solid #e1e3e5;
+        border-bottom: 0;
+        border-left: 0;
+        border-top-right-radius: 10px;
+      }
+      .ID {
+        border: 1px solid lightgray;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 1rem;
+        font-size: 1.05rem;
+      }
+      .PW {
+        border: 1px solid lightgray;
+        border-top: 0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 1rem;
+        font-size: 1.05rem;
+      }
+      .loginOption {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.7rem 0;
+      }
+      .flex {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .checkCircle {
+        position: relative;
+      }
+      .checkCircle::after {
+        position: absolute;
+        top: -25%;
+        left: -25%;
+        content: "L";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid gray;
+        background-color: white;
+        width: 1rem;
+        height: 1rem;
+        line-height: 0;
+        border-radius: 50%;
+        color: gray;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transform: scaleY(-1) rotate(135deg);
+      }
+      .checkCircle:checked::after {
+        position: absolute;
+        top: -25%;
+        left: -25%;
+        content: "L";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1rem;
+        height: 1rem;
+        line-height: 0;
+        border-radius: 50%;
+        color: white;
+        border: 2px solid #04cf5c;
+        background-color: #04cf5c;
+        font-size: 0.8rem;
+        font-weight: bold;
+        transform: scaleY(-1) rotate(135deg);
+      }
+      .text-gray {
+        color: gray;
+        text-decoration: none;
+        a {
+          color: gray;
+          text-decoration: none;
+        }
+      }
+      .font-sm {
+        font-size: small;
+      }
+      .toggle {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background-color: #04cf5c;
+        font-size: 0.7rem;
+        color: white;
+        font-weight: bold;
+        border-radius: 0.6rem;
+        border: 2px solid #04cf5c;
+      }
+      .whiteCircle {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: white;
+      }
+      .loginButton {
+        background-color: #04cf5c;
+        color: white;
+        font-size: 1.05rem;
+        border: 0;
+        border-radius: 10px;
+        padding: 1rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <select class="self-end">
+        <option value="ko_KR">한국어</option>
+        <option value="en_US">English</option>
+        <option value="zh-Hans_CN">中文(简体)</option>
+        <option value="zh-Hant_TW">中文(台灣)</option>
+      </select>
+      <div class="logo"></div>
+      <div class="loginContainer">
+        <div class="loginTypeContainer">
+          <div class="loginType selectedLoginType">ID 로그인</div>
+          <div class="loginType unselectedLoginType1">일회용 번호</div>
+          <div class="loginType unselectedLoginType2">QR코드</div>
+        </div>
+        <form class="loginForm">
+          <input class="ID" type="text" placeholder="아이디" />
+          <input class="PW" type="password" placeholder="비밀번호" />
+          <div class="loginOption">
+            <div class="flex">
+              <input type="checkbox" class="checkCircle" />
+              <span class="text-gray font-sm"> 로그인 상태 유지 </span>
+            </div>
+            <div class="flex">
+              <span class="font-sm"> IP보안 </span>
+              <div class="toggle">
+                ON
+                <div class="whiteCircle"></div>
+              </div>
+            </div>
+          </div>
+          <input class="loginButton" type="submit" value="로그인" />
+        </form>
+      </div>
+      <div class="flex font-sm text-gray">
+        <a href="#">비밀번호 찾기</a>
+        |
+        <a href="#">아이디 찾기</a>
+        |
+        <a href="#">회원가입</a>
+      </div>
+    </div>
+  </body>
+</html>
