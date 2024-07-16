@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5buttons</title>
+  </head>
+  <body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <script>
+      const hi = () => {
+        alert("안녕");
+      };
+      for (let i = 1; i <= 5; i++) {
+        const button = document.createElement("button");
+        button.textContent = "버튼" + i;
+        button.addEventListener("click", hi);
+        document.querySelector("#div1").append(button);
+      }
+
+      for (let i = 1; i <= 5; i++) {
+        const button = document.createElement("button");
+        button.textContent = "안녕버튼" + i;
+        button.addEventListener("click", () => {
+          alert("안녕 버튼 " + i);
+        });
+        document.querySelector("#div2").append(button);
+      }
+    </script>
+  </body>
+</html>
