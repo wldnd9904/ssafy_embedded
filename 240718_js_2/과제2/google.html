@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>새 탭</title>
+    <link href="./google.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header>
+      <ul class="flex items-center justify-end gap-2 list-none">
+        <li>
+          <a href="#">Gmail</a>
+        </li>
+        <li>
+          <a href="#">이미지</a>
+        </li>
+        <li>
+          <button class="darkModeButton">다크 모드</button>
+        </li>
+      </ul>
+    </header>
+    <!-- 메인 -->
+    <main class="flex flex-col items-center">
+      <!-- 로고 -->
+      <img class="logo" src="./js2_images/logo.png" alt="logo" />
+      <!-- 검색창 -->
+      <div class="searchBar">
+        <img src="./js2_images/search.png" alt="search" />
+        <input type="text" placeholder="Google 검색 또는 URL 입력" />
+      </div>
+      <!-- 북마크 -->
+      <ul class="bookmarkList list-none">
+        <li>
+          <button class="bookmark">
+            <div class="imgContainer">
+              <img src="./js2_images/ssafy.png" alt="ssafy" />
+            </div>
+            에듀싸피
+          </button>
+        </li>
+        <li>
+          <button class="bookmark">
+            <div class="imgContainer">
+              <img src="./js2_images/ssafy.png" alt="ssafy" />
+            </div>
+            싸피랩
+          </button>
+        </li>
+        <li>
+          <button class="bookmark">
+            <div class="imgContainer">
+              <img src="./js2_images/ssafy.png" alt="ssafy" />
+            </div>
+            미팅싸피
+          </button>
+        </li>
+        <li>
+          <button class="bookmark">
+            <div class="imgContainer">
+              <img src="./js2_images/ssafy.png" alt="ssafy" />
+            </div>
+            싸피
+          </button>
+        </li>
+        <li>
+          <button class="bookmark">
+            <div class="bookmarkAddImgContainer">+</div>
+            바로가기 추가
+          </button>
+        </li>
+      </ul>
+    </main>
+    <script src="./google.js"></script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bg-yellow</title>
+    <style>
+      .bg-yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button>추가</button><button>제거</button><button>토글</button>
+    <script>
+      const body = document.querySelector("body");
+      const buttonList = document.querySelectorAll("button");
+      buttonList[0].addEventListener("click", () =>
+        body.classList.add("bg-yellow")
+      );
+      buttonList[1].addEventListener("click", () =>
+        body.classList.remove("bg-yellow")
+      );
+      buttonList[2].addEventListener("click", () =>
+        body.classList.toggle("bg-yellow")
+      );
+    </script>
+  </body>
+</html>

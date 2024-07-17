@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>네이버</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="./naver.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-100 transition-all">
+    <!-- 상단 메뉴 -->
+    <header class="transition-all" id="header">
+      <ul class="flex px-2 items-center">
+        <button class="img-burger"></button>
+        <button class="img-pay"></button>
+        <button class="flex-grow"></button>
+        <button class="img-talk"></button>
+        <button class="img-bell"></button>
+        <button class="img-na"></button>
+      </ul>
+    </header>
+    <!-- 메인 -->
+    <main class="flex flex-col items-center pt-16 gap-8">
+      <!-- 검색창 -->
+      <div
+        class="flex text-black bg-white gap-2 p-1 pl-2 rounded-full border border-green-500 overflow-hidden shadow"
+      >
+        <div class="img-N"></div>
+        <input
+          class="flex-grow outline-none w-96"
+          type="text"
+          placeholder="검색어를 입력해주세요"
+        />
+        <div class="img-circle"></div>
+      </div>
+      <!-- 바로가기 메뉴 -->
+      <div class="flex flex-wrap w-72 gap-8 justify-between mb-32">
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/뉴스판.png"
+            alt="뉴스판"
+          />
+          <span class="text-xs"> 뉴스판 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/쇼핑판.png"
+            alt="쇼핑판"
+          />
+          <span class="text-xs"> 쇼핑판 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/경제판.png"
+            alt="경제판"
+          />
+          <span class="text-xs"> 경제판 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/클립판.png"
+            alt="클립판"
+          />
+          <span class="text-xs"> 클립판 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/메일.png"
+            alt="메일"
+          />
+          <span class="text-xs"> 메일 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/카페.png"
+            alt="카페"
+          />
+          <span class="text-xs"> 카페 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/블로그.png"
+            alt="블로그"
+          />
+          <span class="text-xs"> 블로그 </span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <img
+            class="w-11 h-11 rounded-xl shadow"
+            src="./images-naver-mobile/더보기.png"
+            alt="더보기"
+          />
+        </div>
+      </div>
+      <!-- 타일 -->
+      <div class="flex gap-2 overflow-hidden p-2 text-black">
+        <div
+          class="flex flex-col bg-white shadow rounded-lg w-fit h-fit p-4 flex-shrink-0"
+        >
+          <span class="font-bold">중부지방 집중호우 계속</span>
+          <span class="text-xs">초단기 강수 예측 지도를 참고하세요</span>
+        </div>
+        <div
+          class="flex flex-col bg-white shadow rounded-lg w-fit h-fit p-4 flex-shrink-0"
+        >
+          <span class="font-bold">강풍주의보</span>
+          <span class="text-xs">서울시 반포3동</span>
+        </div>
+        <div
+          class="flex flex-col bg-white shadow rounded-lg w-fit h-fit p-4 flex-shrink-0"
+        >
+          <span class="font-bold">24.4º</span>
+          <span class="text-xs">시간당 강수량 3.5 mm</span>
+        </div>
+        <div
+          class="flex flex-col bg-white shadow rounded-lg w-fit h-fit p-4 flex-shrink-0"
+        >
+          <span class="font-bold text-blue-400">7좋음</span>
+          <span class="text-xs">미세먼지</span>
+        </div>
+        <div
+          class="flex flex-col bg-white shadow rounded-lg w-fit h-fit p-4 flex-shrink-0"
+        >
+          <span class="font-bold">1380.70</span>
+          <span class="text-xs">환율 USD</span>
+        </div>
+      </div>
+      <div class="h-48"></div>
+      <!-- 다크모드 토글 -->
+    </main>
+    <button
+      id="darkToggleBtn"
+      class="fixed bottom-4 right-4 w-16 h-9 p-1 bg-white shadow rounded-full"
+    >
+      <div
+        id="darkSwitch"
+        class="w-6 h-6 bg-orange-300 rounded-full transition-all"
+      >
+        <div
+          id="mask"
+          class="w-4 h-4 bg-white rounded-full transition-all opacity-0 -translate-x-0.5 -transalte-y-0.5"
+        ></div>
+      </div>
+    </button>
+    <script src="./naver.js"></script>
+  </body>
+</html>

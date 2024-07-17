@@ -1,0 +1,64 @@
+.img-burger {
+  width: 44px;
+  height: 44px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -49px;
+  background-position-y: -145px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-pay {
+  width: 40px;
+  height: 40px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: 0px;
+  background-position-y: -194px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-talk {
+  width: 40px;
+  height: 40px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -90px;
+  background-position-y: -194px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-bell {
+  width: 40px;
+  height: 40px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -45px;
+  background-position-y: -194px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-na {
+  width: 44px;
+  height: 44px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -147px;
+  background-position-y: -145px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-N {
+  background-color: #2db400;
+  width: 38px;
+  height: 38px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -196px;
+  background-position-y: -145px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
+.img-circle {
+  width: 40px;
+  height: 40px;
+  background-image: url("./images-naver-mobile/sprite.png");
+  background-position-x: -241px;
+  background-position-y: -145px;
+  background-repeat: no-repeat;
+  background-size: 323px 234px;
+}
