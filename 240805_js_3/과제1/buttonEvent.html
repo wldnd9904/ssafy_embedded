@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼에 이벤트 추가하기</title>
+  </head>
+  <body></body>
+  <script>
+    const button = document.createElement("button");
+    button.textContent = "클릭";
+    button.addEventListener("click", () => {
+      const div = document.createElement("div");
+      div.textContent = "안녕!";
+      document.body.append(div);
+    });
+    document.body.append(button);
+  </script>
+</html>
