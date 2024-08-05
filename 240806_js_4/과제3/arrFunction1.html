@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>할일</title>
+  </head>
+  <body></body>
+  <script>
+    function toCheckBox(item) {
+      return `
+  <li id=${item.id}>
+    <label>
+      <input type="checkbox" ${item.done ? "checked" : ""} />
+      ${item.text}
+    </label>
+  </li>
+`;
+    }
+    function render(list) {
+      let html = "";
+      const renderedBucketLists = list.map(toCheckBox).join("");
+      html = "<ul>" + renderedBucketLists + "</ul>";
+      return html;
+    }
+    const bucketLists = [
+      { id: 3, text: "여행가기", done: false },
+      { id: 2, text: "치킨 먹기", done: true },
+      { id: 1, text: "코딩 하기", done: false },
+    ];
+    const renderedHTML = render(bucketLists);
+    console.log(renderedHTML);
+    document.body.innerHTML = renderedHTML;
+  </script>
+</html>
