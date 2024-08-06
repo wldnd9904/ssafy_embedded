@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>싸피플레이리스트</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #search {
+        display: flex;
+        justify-content: center;
+        background-color: black;
+        padding: 1rem;
+      }
+      #search input {
+        background-color: black;
+        color: white;
+        border: 1px solid gray;
+        border-right: 0;
+        width: 400px;
+        height: 40px;
+        border-radius: 40px 0px 0px 40px;
+        padding: 0 0 0 1rem;
+        box-sizing: border-box;
+        font-size: large;
+      }
+      #search button {
+        background-color: black;
+        border: 1px solid gray;
+        color: white;
+        padding: 0.25rem;
+        width: 60px;
+        height: 40px;
+        border-radius: 0px 40px 40px 0px;
+      }
+      #player {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 315px;
+        background-color: black;
+        margin: 0 auto 2rem;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+      }
+      #list {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      .item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border: 0;
+        background-color: white;
+        border-radius: 1rem;
+        width: 320px;
+        height: 180px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+          rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        overflow: hidden;
+        padding: 0;
+      }
+      .item span {
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        width: 100%;
+        padding: 0.125rem;
+        text-wrap: pretty;
+        pointer-events: none;
+      }
+      .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.1s ease-in-out;
+      }
+      .item img:hover {
+        scale: 1.05;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="search">
+      <input type="text" value="ssafy" />
+      <button onclick="search();">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          focusable="false"
+          style="
+            pointer-events: none;
+            display: inherit;
+            width: 100%;
+            height: 100%;
+          "
+          aria-hidden="true"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M16.296 16.996a8 8 0 11.707-.708l3.909 3.91-.707.707-3.909-3.909zM18 11a7 7 0 00-14 0 7 7 0 1014 0z"
+            fill-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <div id="player"></div>
+    <div id="list"></div>
+    <script>
+      const url = "https://www.googleapis.com/youtube/v3";
+      const key = "AIzaSyDEJ7wQUEK6jwmywMAxGxdfZ9YUKUiATmA";
+
+      const getYoutube = (id) => `
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/${id.videoId}" title="Youtube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+        </iframe>
+        `;
+
+      async function getVideos(word) {
+        const items = (
+          await axios.get(`${url}/search`, {
+            params: {
+              key: key,
+              part: "snippet",
+              type: "video",
+              q: word,
+              maxResults: 10,
+            },
+          })
+        ).data.items;
+        console.log(items);
+        const player = document.querySelector("#player");
+        const list = document.querySelector("#list");
+        list.innerHTML = "";
+        items.forEach((item) => {
+          const button = document.createElement("button");
+          const thumbnail = document.createElement("img");
+          const title = document.createElement("span");
+          button.className = "item";
+          thumbnail.src = item.snippet.thumbnails.medium.url;
+          title.textContent = item.snippet.title;
+          button.append(thumbnail);
+          button.append(title);
+          button.addEventListener("click", () => {
+            player.innerHTML = getYoutube(item.id);
+            document
+              .querySelectorAll(".item")
+              .forEach((item) => (item.style.border = "2px solid transparent"));
+            button.style.border = "2px solid blue";
+          });
+          list.append(button);
+        });
+        player.innerHTML = getYoutube(items[0].id);
+        document.querySelector(".item").style.border = "2px solid blue";
+      }
+      getVideos("ssafy");
+      function search() {
+        getVideos(document.querySelector("input").value);
+      }
+    </script>
+  </body>
+</html>

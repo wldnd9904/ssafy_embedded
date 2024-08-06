@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>API+HTML</title>
+    <style>
+      .container {
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 1rem;
+        max-width: 1024px;
+        margin: 0 auto;
+      }
+      .imageContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img {
+          width: 200px;
+          height: 133px;
+          background-color: gray;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container"></ul>
+  </body>
+  <script>
+    const url = "https://picsum.photos/v2/list?page=1&limit=20";
+    const container = document.querySelector(".container");
+    fetch(url)
+      .then((data) => data.json())
+      .then((list) => {
+        container.innerHTML = list
+          .map(
+            (item) => `
+    <li class="imageContainer" id="${item.id}">
+        Author: ${item.author}
+        <img src="${item.download_url}">
+    </li>
+    `
+          )
+          .join("");
+      });
+  </script>
+</html>

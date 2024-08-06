@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sync</title>
+  </head>
+  <body></body>
+  <script>
+    function promiseSetTimeout(time, func) {
+      return new Promise((resolve) =>
+        setTimeout(() => {
+          func();
+          resolve();
+        }, time)
+      );
+    }
+    async function run() {
+      console.log("Hi");
+      await promiseSetTimeout(500, () => {
+        console.log("First");
+      });
+      await promiseSetTimeout(1000, () => {
+        console.log("Second");
+      });
+      await promiseSetTimeout(2000, () => {
+        console.log("Third");
+      });
+    }
+
+    run();
+  </script>
+</html>

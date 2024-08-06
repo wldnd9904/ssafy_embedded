@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .container {
+        display: flex;
+        max-width: 1024px;
+        margin: 0 auto;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .itemContainer {
+        padding: 1rem;
+        font-weight: bold;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        width: 250px;
+        height: 250px;
+        border-radius: 30px;
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      }
+      .itemContainer > img {
+        width: 60%;
+        height: 60%;
+        object-fit: contain;
+      }
+    </style>
+    <title>API+HTML2</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <script>
+      const run = async () => {
+        const url = "https://fakestoreapi.com/products";
+        const data = await fetch(url).then((res) => res.json());
+        const html = data.reduce((pre, cur) => {
+          return (
+            pre +
+            `
+<div class="itemContainer" id=${cur.id}>
+    ${cur.title}
+    <img src=${cur.image} alt=${cur.title}/>
+    $${cur.price}
+</div>
+            `
+          );
+        }, "");
+        document.querySelector(".container").innerHTML = html;
+      };
+      run();
+    </script>
+  </body>
+</html>

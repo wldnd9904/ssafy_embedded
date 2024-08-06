@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>넷플릭스</title>
+    <style>
+      #container {
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1024px;
+        margin: 0 auto;
+        justify-content: space-evenly;
+        gap: 1.5rem 0rem;
+      }
+      .item {
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+        height: 550px;
+        border-radius: 40px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        padding: 1rem;
+        gap: 0.5rem;
+      }
+      .item img {
+        width: 300px;
+        height: 428px;
+        border-radius: 40px;
+        object-fit: cover;
+      }
+      .item span {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.5; /* 줄 간격을 조절합니다 */
+        max-height: 4.5em; /* 3줄에 맞게 조절합니다 */
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        background-color: black;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        font-size: larger;
+        margin-bottom: 2rem;
+      "
+    >
+      상영 중인 영화
+    </div>
+    <div id="container"></div>
+    <script>
+      const request = axios.get(
+        "https://api.themoviedb.org/3/movie/now_playing",
+        {
+          params: {
+            api_key: "cd5eb409e8224e9d4e8648acfc024550",
+            language: "ko-KR",
+          },
+        }
+      );
+      request.then((res) => {
+        console.log(res.data.results);
+        const html = res.data.results
+          .map(
+            (item) => `
+       <div class="item">
+          <img src="https://image.tmdb.org/t/p/w500${item.poster_path}"/>
+          <span style="font-weight:bold; font-size: bigger">${item.title}</span>
+          <span>${item.overview}</span>
+          </div>
+      `
+          )
+          .join("");
+        document.querySelector("#container").innerHTML = html;
+      });
+    </script>
+  </body>
+</html>
