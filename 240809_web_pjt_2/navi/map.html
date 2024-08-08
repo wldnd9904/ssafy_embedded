@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>차량용 인포테인먼트 시스템 - MAP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="device">
+      <div class="screen">
+        <div class="top-bar">
+          <span class="brand">AI 차량용 인포테인먼트</span>
+          <div class="top-right">
+            <span id="current-time" class="current-time"></span>
+            <img
+              src="./img/home.svg"
+              class="home-icon"
+              onclick="location.href='index.html'"
+              alt="Home"
+            />
+          </div>
+        </div>
+        <!-- map.html -->
+        <div class="content">
+          <div class="nav-info">
+            <div class="search-box">
+              <input
+                type="text"
+                id="search-input"
+                class="search-input"
+                placeholder=" 검색어를 입력해주세요 ."
+              />
+              <button id="search-button" class="search-button">검색</button>
+            </div>
+            <div class="result-box">
+              <div id="map"></div>
+              <div class="search-results">
+                <div class="info item" style="cursor: not-allowed">
+                  검색어를 입력해주세요 .
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-name">SSAFY</div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+      integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4f65c6670aab51931b52f783e87c86dd&libraries=services"
+    ></script>
+    <script src="map.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
