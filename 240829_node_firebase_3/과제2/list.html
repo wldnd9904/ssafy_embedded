@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List</title>
+  </head>
+  <body>
+    <h1>게시글 목록</h1>
+    <div>현재 로그인한 사용자: <span class="user-email"></span></div>
+    <ul class="article-ul"></ul>
+    <div>
+      <a href="./create.html">게시글 생성</a>
+    </div>
+    <button class="logout-btn">로그아웃</button>
+    <script type="module">
+      import { getArticles } from "./article.js";
+      import { logout } from "../auth/auth.js";
+      const articles = await getArticles();
+      if (articles == "permission-denied") {
+        alert("로그인이 필요합니다.");
+        location.href = "../auth/login.html";
+      } else {
+        const articleUl = document.querySelector(".article-ul");
+        const articleComponents = articles.reduce((acc, article) => {
+          acc += `
+          <li>
+            <div>
+              <span> id: </span>
+              <span class="id-data">
+                <a href="./detail.html?id=${article.id}">${article.id}</a>
+                </span>
+                </div>
+                <div>
+                  <span> title: </span>
+                  <span class="title-data">
+                    <span style="font-weight: bold;">${article.title}</span>
+                    </span>
+                    </div>
+                    </br>
+                    </li>
+                    `;
+          return acc;
+        }, "");
+        articleUl.insertAdjacentHTML("beforeend", articleComponents);
+      }
+      //-------------------과제2: 로그아웃 -------------------//
+      const logoutBtn = document.querySelector(".logout-btn");
+      logoutBtn.addEventListener("click", async function () {
+        await logout();
+        alert("로그아웃 되었습니다.");
+        location.href = "../index.html";
+      });
+      //-----------------------------------------------------//
+    </script>
+  </body>
+</html>

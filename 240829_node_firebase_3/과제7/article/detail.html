@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail</title>
+  </head>
+  <body>
+    <h1>게시글 상세조회</h1>
+    <div>
+      <span>id: </span>
+      <span class="id-data">id</span>
+    </div>
+    <div>
+      <span>title: </span>
+      <span class="title-data">title</span>
+    </div>
+    <div>
+      <span>content: </span>
+      <span class="content-data">content</span>
+    </div>
+    <div>
+      <span>createdAt: </span>
+      <span class="created-at-data">createdAt</span>
+    </div>
+    <div>
+      <span>updatedAt: </span>
+      <span class="updated-at-data">updatedAt</span>
+    </div>
+    <a class="update-link" href="#">게시글 수정</a>
+    <button class="delete-btn">게시글 삭제</button>
+    <br />
+    <a href="./list.html">게시글 목록으로 돌아가기</a>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.13/dayjs.min.js"
+      integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="module">
+      import { getArticle, deleteArticle } from "./article.js";
+      const params = new URLSearchParams(location.search);
+      const id = params.get("id");
+      const article = await getArticle(id);
+      if (article == "permission-denied") {
+        alert("로그인이 필요합니다.");
+        location.href = "../auth/login.html";
+      }
+      const idData = document.querySelector(".id-data");
+      const titleData = document.querySelector(".title-data");
+      const contentData = document.querySelector(".content-data");
+      const createdAtData = document.querySelector(".created-at-data");
+      const updatedAtData = document.querySelector(".updated-at-data");
+      const updateLink = document.querySelector(".update-link");
+      const deleteBtn = document.querySelector(".delete-btn");
+      const createdAt = dayjs(
+        new Date(article.createdAt.seconds * 1000)
+      ).format("MM.DD HH:mm:ss");
+      const updatedAt = dayjs(
+        new Date(article.updatedAt.seconds * 1000)
+      ).format("MM.DD HH:mm:ss");
+      idData.textContent = article.id;
+      titleData.textContent = article.title;
+      contentData.textContent = article.content;
+      createdAtData.textContent = createdAt;
+      updatedAtData.textContent = updatedAt;
+      updateLink.setAttribute("href", `./update.html?id=${article.id}`);
+      deleteBtn.addEventListener("click", async () => {
+        if (!confirm("정말로 삭제할까요?")) return;
+        const result = await deleteArticle(article.id);
+        if (result == "permission-denied") {
+          alert("권한이 없습니다.");
+          return;
+        }
+        alert("게시글이 삭제되었습니다.");
+        location.href = "./list.html";
+      });
+    </script>
+  </body>
+</html>

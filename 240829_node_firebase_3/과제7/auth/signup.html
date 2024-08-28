@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+  </head>
+  <body>
+    <h1>회원가입</h1>
+    <div>
+      <input class="email-input" type="email" placeholder="이메일" />
+    </div>
+    <div>
+      <input class="pw1-input" type="password" placeholder="비밀번호" />
+    </div>
+    <div>
+      <input class="pw2-input" type="password" placeholder="비밀번호 확인" />
+    </div>
+    <button class="signup-btn">회원가입</button>
+    <script type="module">
+      import { signup } from "./auth.js";
+      const emailInput = document.querySelector(".email-input");
+      const pw1Input = document.querySelector(".pw1-input");
+      const pw2Input = document.querySelector(".pw2-input");
+      const signupBtn = document.querySelector(".signup-btn");
+      signupBtn.addEventListener("click", async () => {
+        const emailValue = emailInput.value.trim();
+        const pw1Value = pw1Input.value.trim();
+        const pw2Value = pw2Input.value.trim();
+        if (!emailValue || !pw1Value || !pw2Value) {
+          alert("회원 가입 정보가 유효하지 않습니다.");
+          return false;
+        }
+        if (pw1Value != pw2Value) {
+          alert("두 비밀번호가 일치하지 않습니다.");
+          return false;
+        }
+        const result = await signup(emailValue, pw1Value);
+        console.log(result);
+        switch (result) {
+          case "auth/email-already-in-use":
+            alert("이미 존재하는 계정입니다.");
+            return false;
+          case "auth/weak-password":
+            alert("비밀번호는 6자 이상이어야 합니다.");
+            return false;
+        }
+        alert("회원가입이 완료되었습니다.");
+        location.href = "./login.html";
+      });
+    </script>
+  </body>
+</html>
