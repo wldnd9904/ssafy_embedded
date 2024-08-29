@@ -1,0 +1,7 @@
+Aug 31 11:30:33 host5 kernel: FATAL: Kernel panic - not syncing
+Aug 31 11:45:44 host7 kernel: DEBUG: Disk I/O statistics
+Aug 31 12:00:10 host10 kernel: ERROR: File system error
+Aug 31 12:15:05 host2 kernel: INFO: Service started
+Aug 31 12:30:22 host1 kernel: WARNING: Service timeout
+Aug 31 12:45:35 host3 kernel: DEBUG: Memory allocation
+Aug 31 13:00:40 host9 kernel: FATAL: Overheating detected
