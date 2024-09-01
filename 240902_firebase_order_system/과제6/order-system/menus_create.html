@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.menus_create</title>
+  </head>
+  <body>
+    <h1>api.menus.create</h1>
+    <form onsubmit="return false;">
+      <input type="text" id="name-input" placeholder="메뉴이름" />
+      <br />
+      <input type="text" id="description-input" placeholder="메뉴설명" />
+      <br />
+      <input type="file" id="file-input" />
+      <br />
+      <button id="submit-button">생성</button>
+    </form>
+    <script type="module">
+      import api from "./api.js";
+      const nameInput = document.getElementById("name-input");
+      const descriptionInput = document.getElementById("description-input");
+      const fileInput = document.getElementById("file-input");
+      const submitButton = document.getElementById("submit-button");
+
+      submitButton.addEventListener("click", async () => {
+        console.log(nameInput.value);
+        console.log(descriptionInput.value);
+        console.log(fileInput.files[0]);
+        await api.menus.create(
+          nameInput.value,
+          descriptionInput.value,
+          fileInput.files[0]
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.orders_create</title>
+  </head>
+  <body>
+    <h1>api.orders.create</h1>
+    <form onsubmit="return false;">
+      <input type="number" id="quantity-input" placeholder="수량" required />
+      <br />
+      <input type="text" id="detail-input" placeholder="요청사항" />
+      <br />
+      <select id="menu-id-select"></select>
+      <br />
+      <button id="submit-button">주문</button>
+    </form>
+    <script type="module">
+      import api from "./api.js";
+      const quantityInput = document.getElementById("quantity-input");
+      const detailInput = document.getElementById("detail-input");
+      const menuIdSelect = document.getElementById("menu-id-select");
+      const submitButton = document.getElementById("submit-button");
+
+      const menus = await api.menus.findAll();
+      menus.forEach((menu) => {
+        const menuOption = document.createElement("option");
+        menuOption.value = menu.id;
+        menuOption.textContent = menu.name;
+        menuIdSelect.append(menuOption);
+      });
+
+      submitButton.addEventListener("click", async () => {
+        await api.orders.create(
+          +quantityInput.value,
+          detailInput.value,
+          menuIdSelect.value
+        );
+      });
+    </script>
+  </body>
+</html>

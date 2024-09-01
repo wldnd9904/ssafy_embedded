@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.menus_update</title>
+  </head>
+  <body>
+    <h1>api.menus.update</h1>
+    <form onsubmit="return false;">
+      <input type="text" id="name-input" placeholder="메뉴이름" />
+      <br />
+      <input type="text" id="description-input" placeholder="메뉴설명" />
+      <br />
+      <button id="submit-button">수정</button>
+    </form>
+    <script type="module">
+      import api from "./api.js";
+      const menuId = "5C4hIipAou4Mot3TTulo";
+      const nameInput = document.getElementById("name-input");
+      const descriptionInput = document.getElementById("description-input");
+      const submitButton = document.getElementById("submit-button");
+
+      const menu = await api.menus.findOne(menuId);
+      nameInput.value = menu.name;
+      descriptionInput.value = menu.description;
+
+      submitButton.addEventListener("click", async () => {
+        console.log(
+          await api.menus.update(
+            menuId,
+            nameInput.value,
+            descriptionInput.value
+          )
+        );
+      });
+    </script>
+  </body>
+</html>

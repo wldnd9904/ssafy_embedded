@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.orders_update</title>
+  </head>
+  <body>
+    <h1>api.orders.update</h1>
+    <form onsubmit="return false;">
+      <input type="text=" id="order-id-input" disabled />
+      <br />
+      <input type="number" id="quantity-input" placeholder="수량" required />
+      <br />
+      <input type="text" id="detail-input" placeholder="요청사항" />
+      <br />
+      <select id="menu-id-select"></select>
+      <br />
+      <button id="submit-button">수정</button>
+    </form>
+    <script type="module">
+      import api from "./api.js";
+      const orderId = "ejdWLRyZfK1qBQfn1X7z";
+      const orderIdInput = document.getElementById("order-id-input");
+      const quantityInput = document.getElementById("quantity-input");
+      const detailInput = document.getElementById("detail-input");
+      const menuIdSelect = document.getElementById("menu-id-select");
+      const submitButton = document.getElementById("submit-button");
+
+      const menus = await api.menus.findAll();
+      menus.forEach((menu) => {
+        const menuOption = document.createElement("option");
+        menuOption.value = menu.id;
+        menuOption.textContent = menu.name;
+        menuIdSelect.append(menuOption);
+      });
+
+      const order = await api.orders.findOne(orderId);
+      orderIdInput.value = orderId;
+      quantityInput.value = order.quantity;
+      detailInput.value = order.request_detail;
+      menuIdSelect.value = order.menu_id.id;
+
+      submitButton.addEventListener("click", async () => {
+        await api.orders.update(
+          orderId,
+          +quantityInput.value,
+          detailInput.value,
+          menuIdSelect.value
+        );
+      });
+    </script>
+  </body>
+</html>

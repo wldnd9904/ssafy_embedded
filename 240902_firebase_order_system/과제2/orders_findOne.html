@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.orders_findOne</title>
+  </head>
+  <body>
+    <h1>api.orders.findOne</h1>
+    <script type="module">
+      import api from "./api.js";
+
+      async function getOrder() {
+        const menu1 = await api.orders.findOne("Rq4LVlrtL87gCvPOKHXd");
+        const menu2 = await api.orders.findOne("invalidId");
+        console.log(menu1);
+        console.log(menu2);
+      }
+
+      getOrder();
+    </script>
+  </body>
+</html>

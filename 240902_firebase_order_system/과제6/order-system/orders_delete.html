@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.orders_delete</title>
+  </head>
+  <body>
+    <h1>api.orders.delete</h1>
+    <select id="order-id-select"></select>
+    <br />
+    <button id="delete-button">삭제</button>
+    <script type="module">
+      import api from "./api.js";
+      const orderIdSelect = document.getElementById("order-id-select");
+      const orders = await api.orders.findAll();
+      orders.forEach((order) => {
+        const orderOption = document.createElement("option");
+        orderOption.value = order.id;
+        orderOption.textContent = order.id;
+        orderIdSelect.append(orderOption);
+      });
+
+      const deleteButton = document.getElementById("delete-button");
+      deleteButton.addEventListener("click", async () => {
+        const confirmDelete = confirm(`정말로 주문을 취소할까요?`);
+        if (!confirmDelete) return;
+        await api.orders.delete(
+          orders.find((order) => order.id == orderIdSelect.value)
+        );
+        alert("주문이 취소되었습니다.");
+        location.reload();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.menus_delete</title>
+  </head>
+  <body>
+    <h1>api.menus.delete</h1>
+    <input type="text" id="menu-id" placeholder="메뉴ID" />
+    <br />
+    <button id="delete-button">삭제</button>
+    <script type="module">
+      import api from "./api.js";
+
+      const deleteButton = document.getElementById("delete-button");
+      deleteButton.addEventListener("click", async () => {
+        const menuId = document.getElementById("menu-id");
+        const menu = await api.menus.findOne(menuId.value);
+        const confirmDelete = confirm(`정말로 ${menu.name}를 삭제할까요?`);
+        if (!confirmDelete) return;
+        await api.menus.delete(menu);
+      });
+    </script>
+  </body>
+</html>

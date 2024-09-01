@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.orders_findAll</title>
+  </head>
+  <body>
+    <h1>api.orders.findAll</h1>
+    <script type="module">
+      import api from "./api.js";
+
+      async function getOrders() {
+        const orders = await api.orders.findAll();
+        console.log(orders);
+      }
+
+      getOrders();
+    </script>
+  </body>
+</html>

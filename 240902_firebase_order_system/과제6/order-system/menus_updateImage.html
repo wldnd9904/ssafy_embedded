@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>api.menus_updateImage</title>
+  </head>
+  <body>
+    <h1>api.menus.updateImage</h1>
+    <form onsubmit="return false;">
+      <input type="text" id="name-input" placeholder="메뉴이름" disabled />
+      <br />
+      <input
+        type="text"
+        id="description-input"
+        placeholder="메뉴설명"
+        disabled
+      />
+      <br />
+      <input type="file" id="file-input" />
+      기존 이미지:
+      <image id="original_image" width="200px" height="200px"></image>
+      <br />
+      <button id="submit-button">이미지 변경</button>
+    </form>
+    <script type="module">
+      import api from "./api.js";
+      const menuId = "5C4hIipAou4Mot3TTulo";
+      const nameInput = document.getElementById("name-input");
+      const fileInput = document.getElementById("file-input");
+      const descriptionInput = document.getElementById("description-input");
+      const originalImage = document.getElementById("original_image");
+      const submitButton = document.getElementById("submit-button");
+
+      const menu = await api.menus.findOne(menuId);
+      nameInput.value = menu.name;
+      descriptionInput.value = menu.description;
+      originalImage.src = menu.image_src;
+
+      submitButton.addEventListener("click", async () => {
+        console.log(await api.menus.updateImage(menu, fileInput.files[0]));
+      });
+    </script>
+  </body>
+</html>
