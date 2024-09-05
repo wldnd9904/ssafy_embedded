@@ -1,0 +1,16 @@
+* {
+  font-family: "Noto Sans KR", sans-serif;
+  list-style: none;
+}
+ul {
+  padding-left: 0;
+}
+button {
+  border: 1px solid black;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+}
+.shadowed {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
