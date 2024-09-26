@@ -1,0 +1,2 @@
+SSD fullwrite 0xBAB01234
+SSD fullread
